@@ -1,49 +1,39 @@
-import { useState } from "react";
 import { Card, Button } from "react-bootstrap";
+import "./card.css"
+function Post(props) {
 
-function Component(props) {
-
-    const [isHovering, setHovering] = useState(false)
+    //const [isHovering, setHovering] = useState(false)
     
 
     function handleCuddle()
     {
-        alert("This " + props.name + "is very happey because you cuddled it." )
+        alert("This # " + props.index + " " + props.selectedBreed +" is very happey because you cuddled it." )
         
     }
 
     function handlePet()
     {
-        alert("This " + props.name + "is very happey because you cuddled it.")
+        alert("This # " + props.index + " " + props.selectedBreed + " is very happey because you cuddled it.")
     }
     
-    function handleOver()
-    {
-        setHovering(true)
-    }
     
-    function handleLeave()
-    {
-        setHovering(false)
-    }
 
-    return <Card style={{margin: "0.5rem"}}>
-        <h2>Hello, I'm {props.name}</h2>
-        <Button 
-            variant={isHovering?"success":"primary"}
-            onClick={handleCuddle} 
-            onMouseOver={handleOver} 
-            onMouseLeave={handleLeave}>
-                Cuddle Me!
-        </Button>
-        <Button 
-            variant={isHovering?"success":"primary"}
-            onClick={handlePet} 
-            onMouseOver={handleOver} 
-            onMouseLeave={handleLeave}>
-                Pet Me!
-        </Button>
+    return <Card className="card">
+        <Card.Img variant="top" src={props.image} alt={`Dog ${props.index}`} className="card-img"/>
+        <Card.Body className="card-body">
+            <Card.Text className="card-text">Hello, I'm {props.selectedBreed} # {props.index}</Card.Text>
+            <Button className="card-button"
+                onClick={handleCuddle} 
+                >
+                    Cuddle Me!
+            </Button>
+            <Button className="card-button"
+                onClick={handlePet} 
+                >
+                    Pet Me!
+            </Button>
+        </Card.Body>
     </Card>
 }
 
-export default Component;
+export default Post;
